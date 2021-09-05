@@ -1,5 +1,5 @@
 // Require the necessary discord.js classes
-const { Client, Intents, MessageEmbed } = require('discord.js'); // MessageEmbed is a class that allows you to create embeds
+const { Client, Intents, MessageEmbed } = require('discord.js'); // MessageEmbed is the class that allows you to create embeds
 const { token } = require('./config.json');
 const prefix = "!";
 const talkedRecently = new Set(); // Set is a collection of unique values
