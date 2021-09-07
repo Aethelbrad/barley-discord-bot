@@ -1,6 +1,6 @@
 {
   "name": "barley-discord-bot",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Barley bot is a weather bot for Discord using the discordjs library",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "discord-api-types": "^0.22.0",
     "discord.js": "^13.1.0",
     "latest": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

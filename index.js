@@ -5,38 +5,23 @@ const prefix = "!";
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-}); // intents: intents
+  disableMentions: "everyone",
+});
 
 client.on("ready", () => {
   console.log("\u001b[1;32m" + client.user.tag + " is online!"); // ANSI color codes to work with VSC console. %c works in Chrome Debug.
   client.user.setActivity("How To Be A Better Bot", { type: "WATCHING" });
 });
 
-// Event Listener for when a message is sent
-client.on("messageCreate", async message => {
+client.on("messageCreate", (message) => {
+  if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
-
-  const args = message.content.slice(prefix.length).split(' ');
-
-    switch (args[0]) {
-        case "w":
-        await axios
-            .get(
-            `http://api.openweathermap.org/data/2.5/weather?q=${args}&units=metric&appid=${APItoken}`
-            )
-            .then((response) => {
-            const apiData = response;
-            const embed = new MessageEmbed()
-                .setTitle(`${args}`)
-                .setDescription(`${Math.ceil(apiData.data.main.temp)} degrees Fahrenheit`)
-                .addField("Humidity", `${apiData.data.main.humidity}%`)
-                message.channel.send({ embeds: [embed] });
-                console.log(response);
-            })
-            .catch((err) => {
-            console.log(err);
-            });
-        break;
-    };
+  city = message.content.slice(prefix.length).trim();
+  if (city.length === 0) return;
+  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APItoken}`;
+  axios.get(url).then((res) => {
+    console.log(city.charAt(0).toUpperCase() + city.slice(1) + " has a current temperature of " + Math.round(res.data.main.temp) + "°F");
+  });
 });
+
 client.login(token);
