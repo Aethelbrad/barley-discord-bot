@@ -1,27 +1,41 @@
-const { Client, Intents, MessageEmbed } = require("discord.js");
-const { token, APItoken } = require("./config.json");
-const axios = require("axios");
-const prefix = "!";
 
-const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-  disableMentions: "everyone",
+const fs = require('node:fs');
+const path = require('node:path');
+const { Client, Intents, Collection } = require('discord.js');
+const { token } = require('./config.json');
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+client.commands = new Collection();
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+// this for loop will load all the commands into the client.commands collection and will run the command.execute function
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	// Set a new item in the Collection with the key as the command name and the value as the exported module
+	client.commands.set(command.data.name, command);
+}
+
+client.once('ready', () => {
+  console.log( "\u001b[1;35m Barley is online" );
+  client.user.setActivity('Whale Sounds', { type: 'LISTENING' });
 });
 
-client.on("ready", () => {
-  console.log("\u001b[1;32m" + client.user.tag + " is online!"); // ANSI color codes to work with VSC console. %c works in Chrome Debug.
-  client.user.setActivity("How To Be A Better Bot", { type: "WATCHING" });
-});
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
 
-client.on("messageCreate", (message) => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-  city = message.content.slice(prefix.length).trim();
-  if (city.length === 0) return;
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APItoken}`;
-  axios.get(url).then((res) => {
-    console.log(city.charAt(0).toUpperCase() + city.slice(1) + " has a current temperature of " + Math.round(res.data.main.temp) + "°F");
-  });
+	const command = client.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'Command execution failed. You idiot!', ephemeral: true });
+	}
 });
 
 client.login(token);
