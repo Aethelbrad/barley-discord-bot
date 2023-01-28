@@ -1,12 +1,12 @@
-# G.P.A.M. Discord Bot
+# Barley
 
-## General Purpose And Music Discord Bot - *Not in working condition*
+## General Purpose Discord Bot - *Under Construction*
 
 ## End Goal
 
-G.P.A.M. is a fully modular bot – meaning all features and commands can be enabled/disabled to your liking, making it completely customizable. This is also a self-hosted bot – meaning you will need to host and maintain your own instance. You can turn G.P.A.M. into an admin bot, music bot, trivia bot, new best friend or all of these together!
+Barley is a fully modular bot – meaning all features and commands can be enabled/disabled to your liking, making it completely customizable. This is also a self-hosted bot – meaning you will need to host and maintain your own instance.
 
-The default set of modules includes and is not limited to:
+The set of modules includes:
 
 - Moderation features (kick/ban/softban/hackban, mod-log, filter, chat cleanup)
 - Music features (YouTube, SoundCloud, local files, playlists, queues)
@@ -33,7 +33,3 @@ I'm gonna research dis stuff:
 - Welcome messages
 - Casino
 - Reaction roles
-
-### License
-
-Artwork created by [someone] on [somewhere] for the G.P.A.M. Discord Bot Project.
