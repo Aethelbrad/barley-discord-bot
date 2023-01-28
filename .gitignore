@@ -2,8 +2,6 @@ config.json
 
 node_modules
 
-temp.js
+package-lock.json
 
 package.json
-
-package-lock.json

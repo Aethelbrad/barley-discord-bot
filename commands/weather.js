@@ -18,7 +18,7 @@ module.exports = {
             fields: [
                 {
                     name: "Temperature",
-                    value: `${data.main.temp}°C`,
+                    value: `${data.main.temp.toFixed()}°C/${(data.main.temp * 9 / 5 + 32).toFixed()}°F`,
                     inline: true
                 }
             ],

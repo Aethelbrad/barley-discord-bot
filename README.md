@@ -8,13 +8,10 @@ Barley is a fully modular bot – meaning all features and commands can be enabl
 
 The set of modules includes:
 
-- Moderation features (kick/ban/softban/hackban, mod-log, filter, chat cleanup)
+- Moderation features (kick/ban/softban/hackban, mod-log)
 - Music features (YouTube, SoundCloud, local files, playlists, queues)
 - Stream alerts (Twitch, Youtube)
 - Bank (slot machine, user credits)
-- Custom commands
-- Imgur/gif search
-- Admin automation (self-role assignment, cross-server announcements, mod-mail reports)
 
 ## Installation
 
