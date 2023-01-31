@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { weatherToken } = require('../config.json');
+const { weatherToken } = require("../config.json");
 const axios = require("axios");
 
 module.exports = {

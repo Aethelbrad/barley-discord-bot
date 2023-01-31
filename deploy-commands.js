@@ -3,20 +3,27 @@ const path = require("node:path");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { clientId, guildId, token } = require("./config.json");
+
 // This is the array that will hold all the commands
 const commands = [];
+
 // This is the path to the commands folder
 const commandsPath = path.join(__dirname, "commands");
+// This is the path to the user folder in the commands folder
+// const userCommandsPath = path.join(commandsPath, "user");
+
 // This will get all the files in the commands folder that end with .js
 const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith(".js"));
+
 // This for loop will push all the commands into the commands array
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
   const command = require(filePath);
   commands.push(command.data.toJSON());
 }
+
 // This will register the commands to the bot
 const rest = new REST({ version: "9" }).setToken(token);
 
