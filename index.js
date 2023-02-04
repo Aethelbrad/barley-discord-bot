@@ -6,8 +6,12 @@ const { token } = require("./config.json");
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+// this is the path to the commands folder
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, "commands");
+// this is the path to the user folder in the commands folder
+// const userCommandsPath = path.join(__dirname, "user");
+
 const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith(".js"));
