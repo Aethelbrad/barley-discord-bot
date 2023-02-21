@@ -2,7 +2,9 @@
 
 ## Introduction
 
-- This is a bot that I made for my Discord server. It's is used to moderate the server and to provide some fun features like random cat gifs, Chuck Norris jokes, and a music channel. It is written in JavaScript using the [discord.js](https://discord.js.org/#/) library. The bot is hosted with using [Heroku](https://www.heroku.com/). The bot is currently in development and is not ready for production.
+> **_NOTE:_** The bot is currently in development and is not ready for production.
+
+- This is a bot that I made for my Discord server. It's is used to moderate the server and to provide some fun features like random cat gifs, Chuck Norris jokes, and a music channel. It is written in JavaScript using the [discord.js](https://discord.js.org/#/) library. The bot is hosted with using [Heroku](https://www.heroku.com/).
 
 ### Features
 

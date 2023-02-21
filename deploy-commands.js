@@ -7,14 +7,14 @@ const { clientId, guildId, token } = require("./config.json");
 // This is the array that will hold all the commands
 const commands = [];
 
-// This is the path to the commands folder
+// create a const that equals the path to the commands folder and its subfolders
 const commandsPath = path.join(__dirname, "commands");
-// This is the path to the user folder in the commands folder
-// const userCommandsPath = path.join(commandsPath, "user");
 
 // This will get all the files in the commands folder that end with .js
 const commandFiles = fs
+// This line will get all the files in the commands folder
   .readdirSync(commandsPath)
+  // this line will filter out all the files that don't end with .js
   .filter((file) => file.endsWith(".js"));
 
 // This for loop will push all the commands into the commands array
