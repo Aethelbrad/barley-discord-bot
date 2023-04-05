@@ -11,7 +11,7 @@ module.exports = {
         .setDescription('Shows a list of all commands and their descriptions'),
     async execute(interaction) {
         // get all commands
-        const commands = readdirSync(join(__dirname, '..', 'commands')).filter(file => file.endsWith('.js'));
+        const commands = readdirSync(join(__dirname, '..', 'user')).filter(file => file.endsWith('.js'));
 
         // create an embed
         const embed = new MessageEmbed()
@@ -20,7 +20,7 @@ module.exports = {
 
         // add all commands to the embed
         for (const file of commands) {
-            const command = require(join(__dirname, '..', 'commands', `${file}`));
+            const command = require(join(__dirname, '..', 'user', `${file}`));
             embed.addField(`/${command.data.name}`, command.data.description);
         }
 
